@@ -37,7 +37,7 @@ class AeromeScentController (object):
     @staticmethod
     def get_state():
         ret = {}
-        for pin_id, pin in SCENT_ID_TO_PIN_MAPPING.iteritems():
+        for pin_id, pin in list(SCENT_ID_TO_PIN_MAPPING.items()):
             ret[pin_id] = GPIO.input(pin) == GPIO.HIGH
         return ret
 
@@ -90,6 +90,6 @@ class AeromeScentController (object):
             self.log.error("Pin " + str(pin) + " is already " + str(state))
 
     def _set_all_pins_low(self):
-        GPIO.output(SCENT_ID_TO_PIN_MAPPING.values() + [FLUSH_VALVE_PIN], GPIO.LOW)
+        GPIO.output(list(SCENT_ID_TO_PIN_MAPPING.values()) + [FLUSH_VALVE_PIN], GPIO.LOW)
         self.open_valves = 0
         self.status_changed_callback()
