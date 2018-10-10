@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>..:: Stinky ::..</title>
+    <title>..:: Vragrancer ::..</title>
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
@@ -12,23 +12,31 @@
 <body>
 
 <div class="container">
-    <h3>Vragrancer</h3>
-    <div id="scentCheckboxes" class="row">
-        <div data-bind="foreach: availableScents">
-            <!-- Switch -->
-            <span>Scent <span data-bind="text: $index"></span></span>
-            <div class="switch">
-                <label>
-                    Off
-                    <input data-bind="attr: {id: $index}" type="checkbox" onclick="handleClick(this)" disabled="disabled">
-                    <span class="lever"></span>
-                    On
-                </label>
+    <div class="row">
+        <div class="col s12 l6">
+            <div id="scentCheckboxes" class="row" data-bind="foreach: availableScents" >
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Scent <span data-bind="text: $index"></span>
+                                <div class="switch right">
+                                    <label>
+                                        Off
+                                        <input data-bind="attr: {id: $index}" type="checkbox" onclick="handleClick(this)" disabled="disabled">
+                                        <span class="lever"></span>
+                                        On
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <a class="waves-effect waves-light btn" onclick="stopAll()">Stop all scents</a>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <a class="waves-effect waves-light btn" onclick="stopAll()">Stop all scents</a>
     </div>
 </div>
 
